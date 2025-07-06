@@ -20,7 +20,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-users = {'admin': {'password': '1234'}}  # Replace with real DB for production
+users = {'admin': {'password': '1234'}}  
 
 class User(UserMixin):
     def __init__(self, id):
@@ -171,8 +171,7 @@ def decrypt():
 
         if data:
             try:
-                decrypted = decrypt_AES_with_expiry(data, key)
-                decrypted_message = decrypted
+                decrypted_message = decrypt_AES_with_expiry(data, key)
                 color = 'green'
                 extracted_qr_filename = 'extracted_qr.png'
                 extracted_qr_path = os.path.join(QR_FOLDER, extracted_qr_filename)
