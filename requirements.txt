@@ -4,6 +4,6 @@ Flask-Login==0.6.3
 pycryptodome==3.20.0
 qrcode==7.4.2
 Pillow==9.5.0
-opencv-python==4.9.0.80
+opencv-python-headless==4.9.0.80
 numpy==1.26.4
 gunicorn==21.2.0
