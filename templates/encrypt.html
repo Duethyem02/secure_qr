@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypt Message</title>
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #eaeaea; /* Soft gray background */
+            color: #333; /* Dark text for contrast */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #2f4f66; /* Dark blue-gray for a sophisticated header */
+            font-weight: 600;
+        }
+
+        /* Form container */
+        form {
+            background-color: #ffffff; /* White background for form */
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 2rem;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 12px 15px;
+            margin: 0.75rem 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #f5f5f5; /* Light gray input background */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4a90e2; /* Blue border on focus */
+            box-shadow: 0 0 5px rgba(72, 144, 226, 0.2); /* Subtle shadow for focus */
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 70%;
+            padding: 14px;
+            font-size: 1.1rem;
+            color: white;
+            background-color: #4a90e2; /* Soft blue button */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #357ab7; /* Darker blue on hover */
+            transform: scale(1.05); /* Slight hover animation */
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #4a90e2;
+            background-color: transparent;
+            border: 2px solid #4a90e2;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #4a90e2;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        p {
+            font-size: 1rem;
+            color: #333;
+            margin-top: 1rem;
+            font-weight: 400;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            form {
+                padding: 1.5rem;
+                width: 90%;
+            }
+
+            input[type="submit"], a {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Encrypt Message and Generate QR</h1>
+   <form method="POST" enctype="multipart/form-data">
+        Message: <input type="text" name="message"><br><br>
+        Encryption Key: <input type="text" name="key" required><br><br>
+        Fake QR Message: <input type="text" name="fake_message" required><br><br>
+        Expiry Time (in minutes): <input type="number" name="expiry_minutes" min="1" value="5" required><br><br>
+        <!-- Upload a File (optional): <input type="file" name="file"><br><br> -->
+        <input type="submit" value="Encrypt">
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
